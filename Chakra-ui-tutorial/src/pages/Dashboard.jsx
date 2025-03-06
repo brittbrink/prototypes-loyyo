@@ -20,7 +20,7 @@ export default function Dashboard() {
           </CardHeader>
 
           <CardBody color="gray.500">
-            <Text mt={4}>{task.description}</Text>
+            <Text>{task.description}</Text>
           </CardBody>
 
           <Divider borderColor="gray.200" />

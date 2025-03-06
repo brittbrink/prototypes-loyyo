@@ -19,12 +19,7 @@ const colors = {
   },
 }
 
-const fonts = {
-  body: 'Tahoma',
-  heading: 'Courier New',
-}
-
-const theme = extendTheme({ colors, fonts })
+const theme = extendTheme({ colors })
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
