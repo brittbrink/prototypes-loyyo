@@ -1,7 +1,22 @@
-import { Box, Button, Flex, Heading, HStack, Spacer, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Heading, HStack, Spacer, Text, useToast } from '@chakra-ui/react'
 import React from 'react'
+import { MdLockOpen } from 'react-icons/md'
 
 export default function Navbar() {
+    const toast = useToast()
+
+    const showToast = () => {
+        toast({
+            title: "Logged out",
+            description: "You have been successfully logged out",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+            icon: <MdLockOpen />
+        })
+    }
+
   return (
     <Flex as="nav" p="10px" alignItems="center" mb="40px">
         <Heading as="h1">
@@ -12,7 +27,7 @@ export default function Navbar() {
         <HStack spacing="20px">
             <Box bg="gray.200" p="10px">M</Box>
             <Text>mario@netninja.dev</Text>
-            <Button colorScheme='purple'>Logout</Button>
+            <Button colorScheme='purple' onClick={showToast}>Logout</Button>
         </HStack>
     </Flex>
   )
