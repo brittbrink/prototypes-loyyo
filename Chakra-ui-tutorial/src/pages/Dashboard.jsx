@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardBody, CardFooter, CardHeader, Divider, Flex, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/react"
+import { Avatar, Box, Button, Card, CardBody, CardFooter, CardHeader, Divider, Flex, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/react"
 import { MdComment, MdVisibility } from "react-icons/md"
 import { useLoaderData } from "react-router-dom"
 
@@ -11,9 +11,7 @@ export default function Dashboard() {
         <Card key={task.id} borderTop="8px" borderColor="purple.400"  bg="white">
           <CardHeader>
             <Flex gap={5}>
-              <Box w="50px" h="50px"> 
-                A 
-              </Box>
+              <Avatar src={task.img} />
               <Box>
                 <Heading as="h3" size="sm">{task.title}</Heading>
                 <Text>{task.author}</Text>
