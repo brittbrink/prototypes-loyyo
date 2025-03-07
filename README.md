@@ -1,4 +1,4 @@
-# prototypes-loyyo
+# Prototypes-loyyo
 
 ## Material UI prototype
 **Start the app on localhost:**
