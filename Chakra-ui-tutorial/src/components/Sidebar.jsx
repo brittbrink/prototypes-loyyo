@@ -15,7 +15,7 @@ export default function Sidebar() {
             bg={primaryColor}
             color="white"
             direction={{ base: "row", lg: "column" }}
-            h={{ lg: "100vh" }}
+            minH={{ lg: "full" }}
             w="full"
         >
             <Stack

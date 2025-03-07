@@ -1,14 +1,16 @@
 import { Avatar, Box, Button, Card, CardBody, CardFooter, CardHeader, Divider, Flex, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/react"
 import { MdComment, MdVisibility } from "react-icons/md"
 import { useLoaderData } from "react-router-dom"
+import { useThemeContext } from '../layouts/ThemeContext'
 
 export default function Dashboard() {
   const tasks = useLoaderData()
+  const { primaryColor } = useThemeContext()
 
   return (
     <SimpleGrid spacing={10} minChildWidth="300px">
       {tasks && tasks.map(task => (
-        <Card key={task.id} borderTop="8px" borderColor="purple.400"  bg="white">
+        <Card key={task.id} borderTop="8px" borderColor={primaryColor}  bg="white">
           <CardHeader>
             <Flex gap={5}>
               <Avatar src={task.img} />

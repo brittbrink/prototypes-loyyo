@@ -1,7 +1,9 @@
 import { Box, FormControl, FormHelperText, FormLabel, Input, Textarea, Button, Checkbox } from "@chakra-ui/react";
 import { Form, redirect } from "react-router-dom";
+import { useThemeContext } from '../layouts/ThemeContext'
 
 export default function Create() {
+  const { colorScheme } = useThemeContext()
   return (
     <Box maxW="480px">
       <Form method="post" action="/create">
@@ -21,7 +23,7 @@ export default function Create() {
           <FormLabel mb="0" ml="10px">Make this a priority task.</FormLabel>
         </FormControl>
 
-        <Button type="submit">Submit</Button>
+        <Button colorScheme={colorScheme} type="submit">Submit</Button>
       </Form>
     </Box>
   )
