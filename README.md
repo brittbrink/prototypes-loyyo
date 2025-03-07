@@ -5,4 +5,6 @@
 ## Chakra UI prototype
 **Start the json server to retrieve and add data:**
 
-`json-server -w ./data/db.json`
+```
+json-server -w ./data/db.json
+```
