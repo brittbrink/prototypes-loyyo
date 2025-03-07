@@ -1,9 +1,12 @@
 import { Avatar, AvatarBadge, Box, Button, Flex, Heading, HStack, Spacer, Text, useToast } from '@chakra-ui/react'
 import React from 'react'
 import { MdLockOpen } from 'react-icons/md'
+import { useThemeContext } from '../layouts/ThemeContext'
 
 export default function Navbar() {
     const toast = useToast()
+    const { primaryColor } = useThemeContext()
+    const { colorScheme } = useThemeContext()
 
     const showToast = () => {
         toast({
@@ -25,13 +28,13 @@ export default function Navbar() {
             <Spacer />
 
             <HStack spacing="20px">
-                <Avatar name="mario" color="white" bg="purple.400" src="/img/mario.png">
+                <Avatar name="mario" color="white" bg={primaryColor} src="/img/mari.png">
                     <AvatarBadge w="1.3em" bg="teal.500">
                         <Text fontSize="xs" color="white">3</Text>
                     </AvatarBadge>
                 </Avatar>
                 <Text>mario@netninja.dev</Text>
-                <Button colorScheme='purple' onClick={showToast}>Logout</Button>
+                <Button colorScheme={colorScheme} onClick={showToast}>Logout</Button>
             </HStack>
         </Flex>
     )
