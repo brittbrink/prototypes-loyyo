@@ -6,57 +6,21 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { AddCircleOutlineOutlined, SubjectOutlined } from "@mui/icons-material";
+import { AddCircleOutlineOutlined, SubjectOutlined, DarkMode, LightMode } from "@mui/icons-material";
 import { useHistory, useLocation } from 'react-router-dom';
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import { useTheme } from "@emotion/react";
-import { format } from "date-fns";
-import { Avatar } from "@mui/material";
+import { Avatar, Switch, IconButton } from "@mui/material";
 
 const drawerWidth = 240;
 
-const classes = {
-    page: {
-        backgroundColor: '#f9f9f9',
-        width: '100%',
-        padding: (theme) => theme.spacing(3)
-    },
-    drawer: {
-        width: drawerWidth,
-        "& .MuiDrawer-paper": {
-            width: drawerWidth,
-        }
-    },
-    root: {
-        display: 'flex'
-    },
-    active: {
-        background: '#f4f4f4'
-    },
-    title: {
-        padding: (theme) => theme.spacing(2)
-    },
-    appbar: {
-        width: `calc(100% - ${drawerWidth}px)`
-    },
-    toolbar: (theme) => {
-        return {
-            my: `${theme.mixins.toolbar.minHeight}px`
-        }
-    },
-    date: {
-        flexGrow: 1
-    },
-    avatar: {
-        marginLeft: theme => theme.spacing(2)
-    }
-}
-
-export default function Layout({ children }) {
+export default function Layout({ children, mode, setMode }) {
     const history = useHistory()
     const location = useLocation()
-    const theme = useTheme()
+
+    const toggleDarkMode = () => {
+        setMode(mode === 'light' ? 'dark' : 'light');
+    };
 
     const menuItems = [
         {
@@ -72,73 +36,62 @@ export default function Layout({ children }) {
     ]
 
     return (
-        <Box sx={classes.root}>
-            {/* App bar */}
+        <Box sx={{ display: 'flex' }}>
+            {/* App Bar */}
             <AppBar
-                elevation={0}
-                sx={classes.appbar}
+                position="fixed"
+                sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
             >
                 <Toolbar>
-                    <Typography sx={classes.date}>
-                        Today is the {format(new Date(), 'do MMMM y')}
+                    <Typography sx={{ flexGrow: 1 }}>
+                        Today is {new Date().toDateString()}
                     </Typography>
-                    <Typography>
-                        Mario
-                    </Typography>
-                    <Avatar src="/mario-av.png" sx={classes.avatar} />
+                    <IconButton onClick={toggleDarkMode} color="inherit">
+                        {mode === 'light' ? <DarkMode /> : <LightMode />}
+                    </IconButton>
+                    <Avatar src="/mario-av.png" sx={{ ml: 2 }} />
                 </Toolbar>
             </AppBar>
 
-            {/* Side drawer */}
+            {/* Side Drawer */}
             <Drawer
-                sx={classes.drawer}
+                sx={{
+                    width: drawerWidth,
+                    flexShrink: 0,
+                    '& .MuiDrawer-paper': {
+                        width: drawerWidth,
+                    }
+                }}
                 variant="permanent"
                 anchor="left"
             >
-                <div>
-                    <Typography variant="h5" sx={classes.title}>
-                        Ninja Notes
-                    </Typography>
-                </div>
+                <Typography variant="h5" sx={{ p: 2 }}>
+                    Ninja Notes
+                </Typography>
 
-                {/* List / Links */}
-                <List sx={classes.date}>
+                <List>
                     {menuItems.map(item => (
                         <ListItem
-                            button="true"
+                            button
                             key={item.text}
-                            onClick={() =>
-                                history.push(item.path)
-                            }
-                            sx={
-                                location.pathname === item.path
-                                    ? classes.active
-                                    : null
-                            }
+                            onClick={() => history.push(item.path)}
+                            sx={{ background: location.pathname === item.path ? '#ddd' : 'transparent' }}
                         >
-                            <ListItemIcon>
-                                {item.icon}
-                            </ListItemIcon>
+                            <ListItemIcon>{item.icon}</ListItemIcon>
                             <ListItemText primary={item.text} />
                         </ListItem>
                     ))}
                 </List>
 
-                <Box sx={classes.title}>
-                    <Avatar src="/mario-av.png" />
-                    <Typography variant="caption" color="textSecondary">
-                        Logged in as
-                    </Typography>
-                    <Typography>
-                        Mario
-                    </Typography>
+                <Box sx={{ p: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <Typography>Dark Mode</Typography>
+                    <Switch checked={mode === 'dark'} onChange={toggleDarkMode} color="secondary" />
                 </Box>
             </Drawer>
 
-            <Box sx={classes.page}>
-                <Box sx={classes.toolbar(theme)}>
-                    {children}
-                </Box>
+            {/* Page Content */}
+            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+                {children}
             </Box>
         </Box>
     )

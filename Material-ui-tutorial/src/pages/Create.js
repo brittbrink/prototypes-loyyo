@@ -11,6 +11,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import { useHistory } from 'react-router-dom';
+import { useTheme } from '@mui/material';
 
 const classes = {
   field: {
@@ -27,6 +28,7 @@ export default function Create() {
   const [titleError, setTitleError] = useState(false)
   const [detailsError, setDetailsError] = useState(false)
   const [category, setCategory] = useState('todos')
+  const theme = useTheme()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -51,7 +53,7 @@ export default function Create() {
   }
 
   return (
-    <Container>
+    <Container sx={{ backgroundColor: theme.palette.background.default, color: theme.palette.text.primary }} >
       <Typography 
         variant="h6" 
         component="h2" 
@@ -105,17 +107,6 @@ export default function Create() {
         </Button>
 
       </form>
-
-      
-
-      {/* Icons */}
-      {/* <br/>
-      <AcUnitOutlined />
-      <AcUnitOutlined color="secondary" fontSize="large" />
-      <AcUnitOutlined color="action" fontSize="small" />
-      <AcUnitOutlined color="error" fontSize="small" />
-      <AcUnitOutlined color="disabled" fontSize="small" /> */}
-
     </Container>
   )
 }
