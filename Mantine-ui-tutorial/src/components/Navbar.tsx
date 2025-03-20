@@ -6,7 +6,7 @@ const Navbar = () => {
 
     return (
         <AppShell.Navbar p="md" style={{ gap: "10px" }}>
-            <NavLink label="Text Component" onClick={() => navigate('/text')} style={{ margin: "5px" }} />
+            <NavLink label="Dasboard" onClick={() => navigate('/')} style={{ margin: "5px" }} />
             <NavLink label="Button Component" onClick={() => navigate('/button')} style={{ margin: "5px" }} />
         </AppShell.Navbar>
     )
