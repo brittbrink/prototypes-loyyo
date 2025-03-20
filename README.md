@@ -28,3 +28,12 @@ Server will be running on http://localhost:5173/
 ```
 json-server -w ./data/db.json
 ```
+
+## Components prototype
+**Start the app on localhost:**
+
+```
+npm run dev
+```
+
+Server will be running on http://localhost:5173/
