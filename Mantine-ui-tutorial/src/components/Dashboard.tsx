@@ -1,4 +1,4 @@
-import { Card, SimpleGrid, Text, Button, Avatar, Flex, Box, Group, Center } from "@mantine/core";
+import { Card, SimpleGrid, Text, Button, Avatar, Flex, Box, Group } from "@mantine/core";
 import { FaEye, FaCommentDots } from "react-icons/fa";
 
 const data = [

@@ -37,3 +37,12 @@ npm run dev
 ```
 
 Server will be running on http://localhost:5173/
+
+## Mantine UI prototype
+**Start the app on localhost:**
+
+```
+npm run dev
+```
+
+Server will be running on http://localhost:5173/
