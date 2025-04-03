@@ -15,6 +15,7 @@ export default function Sidebar() {
             direction={{ base: "row", lg: "column" }}
             minH={{ lg: "full" }}
             w="full"
+            
         >
             <Stack
                 direction={{ base: "row", lg: "column" }}

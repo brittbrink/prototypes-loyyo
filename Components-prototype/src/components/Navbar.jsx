@@ -1,4 +1,4 @@
-import { Avatar, AvatarBadge, Box, Button, Flex, Heading, HStack, Spacer, Text, useToast } from '@chakra-ui/react'
+import { Avatar, AvatarBadge, Stack, Button, Flex, Heading, HStack, Text, useToast } from '@chakra-ui/react'
 import React from 'react'
 import { PhoneIcon } from '@chakra-ui/icons'
 
@@ -18,21 +18,39 @@ export default function Navbar() {
     }
 
     return (
-        <Flex as="nav" p="10px" alignItems="center" mb="40px">
-            <Heading as="h1">
+        <Flex 
+            as="nav" 
+            p="10px" 
+            alignItems="center" 
+            mb="20px" 
+            h="60px"
+            flexDirection={{ base: "row", md: "row" }} // Stacked on small screens
+            justify={{ base: "center", md: "space-between" }} // Centered on mobile, spaced on desktop
+            textAlign={{ base: "center", md: "left" }}
+            gap={{ base: 3, md: 0 }} // Extra spacing on small screens
+        >
+            <Heading as="h1" size="md">
                 Dojo Tasks
             </Heading>
-            <Spacer />
 
-            <HStack spacing="20px">
-                <Avatar name="mario" color="white" bg="blue.500" src="/img/mari.png">
-                    <AvatarBadge w="1.3em" bg="teal.500">
-                        <Text fontSize="xs" color="white">3</Text>
-                    </AvatarBadge>
-                </Avatar>
-                <Text>mario@netninja.dev</Text>
-                <Button colorScheme="blue" onClick={showToast}>Logout</Button>
-            </HStack>
+            <Stack 
+                direction={{ base: "row", md: "row" }} 
+                align="center" 
+                spacing={4} // Space between items
+            >
+                <HStack spacing="10px">
+                    <Avatar name="mario" color="white" bg="blue.500" src="/img/mari.png">
+                        <AvatarBadge boxSize="1em" bg="teal.500">
+                            <Text fontSize="xs" color="white">3</Text>
+                        </AvatarBadge>
+                    </Avatar>
+                    <Text fontSize={{ base: "sm", md: "md" }}>mario@netninja.dev</Text>
+                </HStack>
+
+                <Button colorScheme="blue" size={{ base: "sm", md: "md" }} onClick={showToast}>
+                    Logout
+                </Button>
+            </Stack>
         </Flex>
-    )
+    );
 }

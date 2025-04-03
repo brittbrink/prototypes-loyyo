@@ -7,9 +7,10 @@ import {
 
 // layouts and pages
 import RootLayout from './layouts/RootLayout'
-import Dashboard, { tasksLoader } from './pages/Dashboard'
+import Dashboard from './pages/Dashboard'
 import Create from './pages/Create'
 import Profile from './pages/Profile'
+import { tasksLoader } from './components/Table'
 
 // router and routes
 const router = createBrowserRouter(
