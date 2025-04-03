@@ -42,7 +42,7 @@ export default function Navbar() {
                 spacing={4} // Space between items
             >
                 <HStack spacing="10px">
-                    <Avatar name="mario" color="white" bg={primaryColor} src="/img/mari.png">
+                    <Avatar name="mario" color="white" bg={primaryColor}>
                         <AvatarBadge boxSize="1em" bg="teal.500">
                             <Text fontSize="xs" color="white">3</Text>
                         </AvatarBadge>

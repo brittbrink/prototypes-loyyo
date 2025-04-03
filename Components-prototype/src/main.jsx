@@ -10,9 +10,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ChakraProvider>
       <ThemeProvider>
-      <TableVisibilityProvider>
-        <App />
-      </TableVisibilityProvider>
+        <TableVisibilityProvider>
+          <App />
+        </TableVisibilityProvider>
       </ThemeProvider>
     </ChakraProvider>
   </React.StrictMode>,
