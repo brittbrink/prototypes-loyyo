@@ -3,14 +3,18 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { EditIcon, AtSignIcon, CalendarIcon } from '@chakra-ui/icons'
 import { useTableVisibility } from '../context/TableVisibilityContext'
+import ThemeSwitcher from '../layouts/ThemeSwitcher'
+import { useThemeContext } from '../layouts/ThemeContext'
 
 export default function Sidebar() {
     const { showTable, toggleTable } = useTableVisibility()
+    const { primaryColor } = useThemeContext()
+
     return (
         <Flex
             as="nav"
             p="10px"
-            bg="blue.500"
+            bg={primaryColor}
             color="white"
             direction={{ base: "row", lg: "column" }}
             minH={{ lg: "full" }}
@@ -18,7 +22,7 @@ export default function Sidebar() {
             
         >
             <Stack
-                direction={{ base: "row", lg: "column" }}
+                direction={{ base: "column", lg: "column" }}
                 spacing={4}
                 align="center"
                 w="full"
@@ -53,6 +57,14 @@ export default function Sidebar() {
                         <Text color="white">Table</Text>
                         <Switch colorScheme="teal" isChecked={showTable} onChange={toggleTable} />
                     </HStack>
+                </Box>
+                <Box>
+                    <Text color="white" fontSize="1.2em" spacing={4} fontWeight={{ base: "normal", lg: "bold" }} >
+                        Theme
+                    </Text>
+                    <Flex mt={{ md: "auto" }} mb={{ md: "10px" }}>
+                        <ThemeSwitcher />
+                    </Flex>
                 </Box>
             </Stack>
         </Flex>

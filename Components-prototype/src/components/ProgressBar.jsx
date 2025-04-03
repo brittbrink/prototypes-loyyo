@@ -1,6 +1,8 @@
 import { Progress, Text } from "@chakra-ui/react";
+import { useThemeContext } from "../layouts/ThemeContext";
 
 export default function ProgressBarComponent () {
+    const { colorScheme } = useThemeContext();
     return (
         <>
             <Text
@@ -12,7 +14,7 @@ export default function ProgressBarComponent () {
             >
                 Progress bar component
             </Text>
-            <Progress value={80} />
+            <Progress value={80} colorScheme={colorScheme} />
         </>
         
     );

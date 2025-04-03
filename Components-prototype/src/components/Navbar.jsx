@@ -1,9 +1,12 @@
 import { Avatar, AvatarBadge, Stack, Button, Flex, Heading, HStack, Text, useToast } from '@chakra-ui/react'
 import React from 'react'
 import { PhoneIcon } from '@chakra-ui/icons'
+import { useThemeContext } from '../layouts/ThemeContext'
 
 export default function Navbar() {
     const toast = useToast()
+    const { primaryColor } = useThemeContext()
+    const { colorScheme } = useThemeContext()
 
     const showToast = () => {
         toast({
@@ -39,7 +42,7 @@ export default function Navbar() {
                 spacing={4} // Space between items
             >
                 <HStack spacing="10px">
-                    <Avatar name="mario" color="white" bg="blue.500" src="/img/mari.png">
+                    <Avatar name="mario" color="white" bg={primaryColor} src="/img/mari.png">
                         <AvatarBadge boxSize="1em" bg="teal.500">
                             <Text fontSize="xs" color="white">3</Text>
                         </AvatarBadge>
@@ -47,7 +50,7 @@ export default function Navbar() {
                     <Text fontSize={{ base: "sm", md: "md" }}>mario@netninja.dev</Text>
                 </HStack>
 
-                <Button colorScheme="blue" size={{ base: "sm", md: "md" }} onClick={showToast}>
+                <Button colorScheme={colorScheme} size={{ base: "sm", md: "md" }} onClick={showToast}>
                     Logout
                 </Button>
             </Stack>
