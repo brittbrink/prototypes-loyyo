@@ -5,9 +5,13 @@ import { EditIcon, AtSignIcon, CalendarIcon } from '@chakra-ui/icons'
 import { useTableVisibility } from '../context/TableVisibilityContext'
 import ThemeSwitcher from '../layouts/ThemeSwitcher'
 import { useThemeContext } from '../layouts/ThemeContext'
+import { useTierLevelVisibility } from '../context/TierLevelVisibilityContext'
+import { useProgressBarVisibility } from '../context/ProgressBarVisibilityContext'
 
 export default function Sidebar() {
     const { showTable, toggleTable } = useTableVisibility()
+    const { showTierLevel, toggleTierLevel } = useTierLevelVisibility()
+    const { showProgressBar, toggleProgressBar } = useProgressBarVisibility()
     const { primaryColor } = useThemeContext()
 
     return (
@@ -56,6 +60,14 @@ export default function Sidebar() {
                     <HStack spacing={4}>
                         <Text color="white">Table</Text>
                         <Switch colorScheme="teal" isChecked={showTable} onChange={toggleTable} />
+                    </HStack>
+                    <HStack spacing={4}>
+                        <Text color="white">Tier level</Text>
+                        <Switch colorScheme='teal' isChecked={showTierLevel} onChange={toggleTierLevel} />
+                    </HStack>
+                    <HStack spacing={4}>
+                        <Text color="white">Progress bar</Text>
+                        <Switch colorScheme='teal' isChecked={showProgressBar} onChange={toggleProgressBar} />
                     </HStack>
                 </Box>
                 <Box>

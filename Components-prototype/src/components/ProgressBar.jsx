@@ -1,11 +1,15 @@
 import { Progress, Text } from "@chakra-ui/react";
 import { useThemeContext } from "../layouts/ThemeContext";
+import { useProgressBarVisibility } from "../context/ProgressBarVisibilityContext";
 
 export default function ProgressBarComponent () {
     const { colorScheme } = useThemeContext();
+    const { showProgressBar } = useProgressBarVisibility();
     return (
         <>
-            <Text
+            {showProgressBar && (
+                <>
+                <Text
                 fontSize="lg"
                 fontWeight="bold"
                 color="gray.500"
@@ -15,6 +19,8 @@ export default function ProgressBarComponent () {
                 Progress bar component
             </Text>
             <Progress value={80} colorScheme={colorScheme} />
+            </> 
+            )}
         </>
         
     );
