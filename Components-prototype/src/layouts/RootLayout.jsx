@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Outlet } from "react-router-dom"
 import Navbar from "../components/Navbar"
-import { Box, Grid, GridItem } from "@chakra-ui/react"
+import { Box, Grid, GridItem, Flex, Button, CloseButton, Text } from "@chakra-ui/react"
 import Sidebar from "../components/Sidebar"
 
 export default function RootLayout() {
@@ -78,7 +78,7 @@ export default function RootLayout() {
             </Flex>
           </Flex>
         )}
-        
+
         <Box flex="1">
           <Outlet />
         </Box>
