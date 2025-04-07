@@ -11,7 +11,7 @@ export default defineConfig({
       includeAssets: [
         'favicon.ico',
         'apple-touch-icon.png',
-        'masked_icon_x384.png',
+        'maskable_icon_x384.png'
       ],
       manifest: {
         name: 'Components Prototype',
