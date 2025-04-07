@@ -21,14 +21,13 @@ export default defineConfig({
         background_color: "#e8eac2",
         display: "standalone",
         scope: "/",
-        start_url: "/",
+        start_url: "/index.html",
         orientation: "any",
         icons: [
           {
             src: '/maskable_icon_x384.png',
             sizes: '384x384',
-            type: 'image/png',
-            purpose: 'maskable any'
+            type: 'image/png'
           },
           {
             src: "/android-chrome-192x192.png",
@@ -43,8 +42,7 @@ export default defineConfig({
           {
             src: '/apple-touch-icon.png',
             sizes: '180x180',
-            type: 'image/png',
-            purpose: 'apple touch icon'
+            type: 'image/png'
           },
           {
             src: '/favicon-32x32.png',
@@ -59,8 +57,7 @@ export default defineConfig({
           {
             src: '/favicon.ico',
             sizes: 'any',
-            type: 'image/x-icon',
-            purpose: 'favicon'
+            type: 'image/x-icon'
           }
         ]
       }
