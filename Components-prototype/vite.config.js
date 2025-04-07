@@ -9,10 +9,10 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: [
-        '/public/favicon.ico',
-        '/public/apple-touch-icon.png',
-        '/public/maskable_icon_x384.png',
-        '/public/android-chrome-192x192.png'
+        'favicon.ico',
+        'apple-touch-icon.png',
+        'maskable_icon_x384.png',
+        'android-chrome-192x192.png'
       ],
       manifest: {
         name: 'Components Prototype',
@@ -22,7 +22,7 @@ export default defineConfig({
         background_color: "#e8eac2",
         display: "standalone",
         scope: "/",
-        start_url: "/",
+        start_url: "https://prototype-loyyo-components.netlify.app/",
         orientation: "any",
         icons: [
           {
