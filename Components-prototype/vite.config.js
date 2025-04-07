@@ -22,7 +22,7 @@ export default defineConfig({
         background_color: "#e8eac2",
         display: "standalone",
         scope: "/",
-        start_url: "https://prototype-loyyo-components.netlify.app/",
+        start_url: "/",
         orientation: "any",
         icons: [
           {
