@@ -9,9 +9,10 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: [
-        'favicon.ico',
-        'apple-touch-icon.png',
-        'maskable_icon_x384.png'
+        '/public/favicon.ico',
+        '/public/apple-touch-icon.png',
+        '/public/maskable_icon_x384.png',
+        '/public/android-chrome-192x192.png'
       ],
       manifest: {
         name: 'Components Prototype',
@@ -21,7 +22,7 @@ export default defineConfig({
         background_color: "#e8eac2",
         display: "standalone",
         scope: "/",
-        start_url: "/index.html",
+        start_url: "/",
         orientation: "any",
         icons: [
           {

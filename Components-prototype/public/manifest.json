@@ -6,7 +6,7 @@
     "background_color": "#e8eac2",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/index.html",
+    "start_url": "/",
     "orientation": "any",
     "icons": [
         {
