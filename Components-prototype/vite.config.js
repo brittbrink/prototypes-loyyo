@@ -54,11 +54,6 @@ export default defineConfig({
             src: '/favicon-16x16.png',
             sizes: '16x16',
             type: 'image/png'
-          },
-          {
-            src: '/favicon.ico',
-            sizes: 'any',
-            type: 'image/x-icon'
           }
         ]
       }
