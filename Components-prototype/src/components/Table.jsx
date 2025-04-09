@@ -1,14 +1,14 @@
-import { Table, Text, TableContainer, Thead, Tr, Td, Th, Tbody } from "@chakra-ui/react"
+import { Table, Text, TableContainer, Thead, Tr, Td, Th, Tbody, Collapse } from "@chakra-ui/react"
 // import { useLoaderData } from "react-router-dom"
-import { useTableVisibility } from "../context/TableVisibilityContext"
+import { useVisibility } from "../context/GenericVisibilityContext";
 
 export default function TableComponent() {
     // const items = useLoaderData()
-    const { showTable } = useTableVisibility()
+    const { visibility } = useVisibility()
 
     return (
         <>
-            {showTable && (
+            <Collapse in={visibility.table} animateOpacity>
                 <TableContainer mt="2">
                     <Text
                         fontSize="lg"
@@ -52,7 +52,7 @@ export default function TableComponent() {
                         </Tbody>
                     </Table>
                 </TableContainer>
-            )}
+            </Collapse>
         </>
     );
 

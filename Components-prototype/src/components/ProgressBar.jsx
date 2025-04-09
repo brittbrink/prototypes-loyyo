@@ -1,28 +1,26 @@
-import { Progress, Text } from "@chakra-ui/react";
+import { Progress, Text, Collapse } from "@chakra-ui/react";
 import { useThemeContext } from "../layouts/ThemeContext";
-import { useProgressBarVisibility } from "../context/ProgressBarVisibilityContext";
+import { useVisibility } from "../context/GenericVisibilityContext";
 
-export default function ProgressBarComponent () {
+export default function ProgressBarComponent() {
     const { colorScheme } = useThemeContext();
-    const { showProgressBar } = useProgressBarVisibility();
+    const { visibility } = useVisibility();
+
     return (
         <>
-            {showProgressBar && (
-                <>
+            <Collapse in={visibility.progressBar} animateOpacity unmountOnExit>
                 <Text
-                fontSize="lg"
-                fontWeight="bold"
-                color="gray.500"
-                mb="2"
-                mt="2"
-            >
-                Progress bar component
-            </Text>
-            <Progress value={80} colorScheme={colorScheme} />
-            </> 
-            )}
+                    fontSize="lg"
+                    fontWeight="bold"
+                    color="gray.500"
+                    mb="2"
+                    mt="2"
+                >
+                    Progress bar component
+                </Text>
+                <Progress value={65} colorScheme={colorScheme} />
+            </Collapse>
         </>
-        
     );
 
 }

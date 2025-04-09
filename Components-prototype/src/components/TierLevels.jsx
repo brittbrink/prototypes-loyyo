@@ -1,16 +1,16 @@
-import { Text, Avatar, Stack, Wrap, WrapItem } from "@chakra-ui/react";
-import { useTierLevelVisibility } from "../context/TierLevelVisibilityContext";
+import { Text, Avatar, Stack, Wrap, WrapItem, Fade, Collapse } from "@chakra-ui/react";
+import { useVisibility } from "../context/GenericVisibilityContext";
 
 export default function TierLevels() {
-    const { showTierLevel } = useTierLevelVisibility();
+    const { visibility } = useVisibility();
+
     return (
         <>
-            {showTierLevel && (
-                <>
+            <Collapse in={visibility.tierLevel} animateOpacity unmountOnExit>
+                <Fade in={visibility.tierLevel}>
                     <Text fontSize="lg" fontWeight="bold" color="gray.500" mb="2">
                         Tier Levels
                     </Text>
-
 
                     <Stack direction={{ base: "column", md: "row" }} spacing={4}>
                         <Wrap spacing={4} >
@@ -36,8 +36,8 @@ export default function TierLevels() {
                             </WrapItem>
                         </Wrap>
                     </Stack>
-                </>
-            )}
+                </Fade>
+            </Collapse>
         </>
     );
 }

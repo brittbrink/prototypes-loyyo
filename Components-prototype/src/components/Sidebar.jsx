@@ -2,16 +2,12 @@ import { Flex, List, ListIcon, ListItem, Radio, RadioGroup, Spacer, Stack, Text,
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { EditIcon, AtSignIcon, CalendarIcon } from '@chakra-ui/icons'
-import { useTableVisibility } from '../context/TableVisibilityContext'
 import ThemeSwitcher from '../layouts/ThemeSwitcher'
 import { useThemeContext } from '../layouts/ThemeContext'
-import { useTierLevelVisibility } from '../context/TierLevelVisibilityContext'
-import { useProgressBarVisibility } from '../context/ProgressBarVisibilityContext'
+import { useVisibility } from '../context/GenericVisibilityContext'
 
 export default function Sidebar() {
-    const { showTable, toggleTable } = useTableVisibility()
-    const { showTierLevel, toggleTierLevel } = useTierLevelVisibility()
-    const { showProgressBar, toggleProgressBar } = useProgressBarVisibility()
+    const { visibility, toggleVisibility } = useVisibility()
     const { primaryColor } = useThemeContext()
 
     return (
@@ -59,15 +55,19 @@ export default function Sidebar() {
                     </Text>
                     <HStack spacing={4}>
                         <Text color="white">Table</Text>
-                        <Switch colorScheme="teal" isChecked={showTable} onChange={toggleTable} />
+                        <Switch colorScheme="teal" isChecked={visibility.table} onChange={() => toggleVisibility("table")} />
                     </HStack>
                     <HStack spacing={4}>
                         <Text color="white">Tier level</Text>
-                        <Switch colorScheme='teal' isChecked={showTierLevel} onChange={toggleTierLevel} />
+                        <Switch colorScheme='teal' isChecked={visibility.tierLevel} onChange={() => toggleVisibility("tierLevel")} />
                     </HStack>
                     <HStack spacing={4}>
-                        <Text color="white">Progress bar</Text>
-                        <Switch colorScheme='teal' isChecked={showProgressBar} onChange={toggleProgressBar} />
+                         <Text color="white">Progress bar</Text>
+                         <Switch colorScheme='teal' isChecked={visibility.progressBar} onChange={() => toggleVisibility("progressBar")} />
+                    </HStack> 
+                    <HStack spacing={4}>
+                        <Text color="white">Stampcard</Text>
+                        <Switch colorScheme='teal' isChecked={visibility.stampCard} onChange={() => toggleVisibility("stampCard")} />
                     </HStack>
                 </Box>
                 <Box>
