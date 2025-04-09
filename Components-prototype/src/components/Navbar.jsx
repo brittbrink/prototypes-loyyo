@@ -25,7 +25,7 @@ export default function Navbar() {
             as="nav" 
             p="10px" 
             alignItems="center" 
-            mb="20px" 
+            mb="5px" 
             h="60px"
             flexDirection={{ base: "row", md: "row" }} // Stacked on small screens
             justify={{ base: "center", md: "space-between" }} // Centered on mobile, spaced on desktop

@@ -48,7 +48,7 @@ export default function RootLayout() {
       <GridItem 
         as="main" 
         colSpan={{ base: 6, lg: 4, xl: 5 }} 
-        p="20px"
+        p="10px"
         minH="100vh"
         display="flex"
         flexDirection="column"

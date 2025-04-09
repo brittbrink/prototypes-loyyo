@@ -1,4 +1,4 @@
-import { Flex, List, ListIcon, ListItem, Radio, RadioGroup, Spacer, Stack, Text, Box, Switch, HStack } from '@chakra-ui/react'
+import { Flex, List, ListIcon, ListItem, Spacer, Stack, Text, Box, Switch, HStack, SimpleGrid } from '@chakra-ui/react'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { EditIcon, AtSignIcon, CalendarIcon } from '@chakra-ui/icons'
@@ -19,7 +19,7 @@ export default function Sidebar() {
             direction={{ base: "row", lg: "column" }}
             minH={{ lg: "full" }}
             w="full"
-            
+
         >
             <Stack
                 direction={{ base: "column", lg: "column" }}
@@ -48,27 +48,64 @@ export default function Sidebar() {
                     </ListItem>
                 </List>
                 <Spacer />
-
                 <Box>
-                    <Text color="white" fontSize="1.2em" spacing={4} fontWeight={{ base: "normal", lg: "bold" }} >
+                    <Text
+                        color="white"
+                        fontSize="1.2em"
+                        fontWeight={{ base: "normal", lg: "bold" }}
+                        mb={4}
+                        display={"flex"}
+                        justifyContent={"center"}
+                    >
                         Components
                     </Text>
-                    <HStack spacing={4}>
-                        <Text color="white">Table</Text>
-                        <Switch colorScheme="teal" isChecked={visibility.table} onChange={() => toggleVisibility("table")} />
-                    </HStack>
-                    <HStack spacing={4}>
-                        <Text color="white">Tier level</Text>
-                        <Switch colorScheme='teal' isChecked={visibility.tierLevel} onChange={() => toggleVisibility("tierLevel")} />
-                    </HStack>
-                    <HStack spacing={4}>
-                         <Text color="white">Progress bar</Text>
-                         <Switch colorScheme='teal' isChecked={visibility.progressBar} onChange={() => toggleVisibility("progressBar")} />
-                    </HStack> 
-                    <HStack spacing={4}>
-                        <Text color="white">Stampcard</Text>
-                        <Switch colorScheme='teal' isChecked={visibility.stampCard} onChange={() => toggleVisibility("stampCard")} />
-                    </HStack>
+
+                    <SimpleGrid columns={2} spacing={4}>
+                        <HStack spacing={4}>
+                            <Text color="white">Table</Text>
+                            <Switch
+                                colorScheme="teal"
+                                isChecked={visibility.table}
+                                onChange={() => toggleVisibility("table")}
+                            />
+                        </HStack>
+
+                        <HStack spacing={4}>
+                            <Text color="white">Tier level</Text>
+                            <Switch
+                                colorScheme="teal"
+                                isChecked={visibility.tierLevel}
+                                onChange={() => toggleVisibility("tierLevel")}
+                            />
+                        </HStack>
+
+                        <HStack spacing={4}>
+                            <Text color="white">Progress bar</Text>
+                            <Switch
+                                colorScheme="teal"
+                                isChecked={visibility.progressBar}
+                                onChange={() => toggleVisibility("progressBar")}
+                            />
+                        </HStack>
+
+                        <HStack spacing={4}>
+                            <Text color="white">Stampcard</Text>
+                            <Switch
+                                colorScheme="teal"
+                                isChecked={visibility.stampCard}
+                                onChange={() => toggleVisibility("stampCard")}
+                            />
+                        </HStack>
+
+                        <HStack spacing={4}>
+                            <Text color="white">Points</Text>
+                            <Switch
+                                colorScheme="teal"
+                                isChecked={visibility.points}
+                                onChange={() => toggleVisibility("points")}
+                            />
+                        </HStack>
+                    </SimpleGrid>
                 </Box>
                 <Box>
                     <Text color="white" fontSize="1.2em" spacing={4} fontWeight={{ base: "normal", lg: "bold" }} >

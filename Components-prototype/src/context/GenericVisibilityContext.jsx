@@ -8,6 +8,7 @@ export const VisibilityProvider = ({ children }) => {
     tierLevel: true,
     stampCard: true,
     progressBar: true,
+    points: true,
     // Add more components here if needed
   });
 

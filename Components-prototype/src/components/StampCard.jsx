@@ -1,26 +1,24 @@
-import { Button, Card, CardBody, CardFooter, Heading, SkeletonCircle, Grid, GridItem, Collapse } from '@chakra-ui/react'
-import { useState } from 'react'
-import { useThemeContext } from '../layouts/ThemeContext'
+import { Card, CardBody, Heading, SkeletonCircle, Grid, GridItem, Collapse, Text, Image } from '@chakra-ui/react'
 import { useVisibility } from '../context/GenericVisibilityContext'
 
 const stampConfig = [
-    { left: { base: "16px", md: "40px", xl: "30px" }, top: { base: "0px", md: "10px", xl: "20px" }, color: "pink" },
-    { left: { base: "18px", md: "39px", xl: "20px" }, top: { base: "5px", md: "16px", xl: "20px" }, color: "red" },
-    { left: { base: "25px", md: "45px", xl: "10px" }, top: { base: "2px", md: "7px", xl: "40px" }, color: "pink" },
-    { left: { base: "8px", md: "45px", xl: "20px" }, top: { base: "8px", md: "23px", xl: "37px" }, color: "pink" },
-    { left: { base: "6px", md: "49px", xl: "20px" }, top: { base: "5px", md: "15px", xl: "26px" }, color: "pink" },
-    { left: { base: "24px", md: "58px", xl: "10px" }, top: { base: "4px", md: "11px", xl: "24px" }, color: "red" },
-    { left: { base: "25px", md: "50px", xl: "20px" }, top: { base: "12px", md: "7px", xl: "30px" }, color: "red" },
-    { left: { base: "27px", md: "42px", xl: "10px" }, top: { base: "5px", md: "14px", xl: "39px" }, color: "red" },
-    { left: { base: "12px", md: "53px", xl: "20px" }, top: { base: "0px", md: "10px", xl: "20px" }, color: "red" },
-    { left: { base: "23px", md: "37px", xl: "10px" }, top: { base: "-2px", md: "18px", xl: "20px" }, color: "pink" },
+    { left: { base: "16px", md: "40px", xl: "30px" }, top: { base: "0px", md: "10px", xl: "20px" }, color: "orange" },
+    { left: { base: "18px", md: "39px", xl: "20px" }, top: { base: "5px", md: "16px", xl: "20px" }, color: "green" },
+    { left: { base: "25px", md: "45px", xl: "10px" }, top: { base: "2px", md: "7px", xl: "40px" }, color: "orange" },
+    { left: { base: "8px", md: "45px", xl: "20px" }, top: { base: "8px", md: "23px", xl: "37px" }, color: "green" },
+    { left: { base: "6px", md: "49px", xl: "20px" }, top: { base: "5px", md: "15px", xl: "26px" }, color: "green" },
+    { left: { base: "24px", md: "58px", xl: "10px" }, top: { base: "4px", md: "11px", xl: "24px" }, color: "orange" },
+    { left: { base: "25px", md: "50px", xl: "20px" }, top: { base: "12px", md: "7px", xl: "30px" }, color: "orange" },
+    { left: { base: "27px", md: "42px", xl: "10px" }, top: { base: "5px", md: "14px", xl: "39px" }, color: "orange" },
+    { left: { base: "12px", md: "53px", xl: "20px" }, top: { base: "0px", md: "10px", xl: "20px" }, color: "green" },
+    { left: { base: "23px", md: "37px", xl: "10px" }, top: { base: "-2px", md: "18px", xl: "20px" }, color: "orange" },
 ];
 
-export default function StampCard() {
-    const { colorScheme } = useThemeContext()
-    const [stamps, setStamps] = useState(0);
+export default function StampCard({points}) {
     const maxStamps = stampConfig.length;
     const { visibility } = useVisibility()
+
+    const stamps = Math.floor(points / 500)
 
     return (
         <Collapse in={visibility.stampCard} animateOpacity unmountOnExit>
@@ -29,6 +27,11 @@ export default function StampCard() {
                     <Heading size='md'>
                         Stamp Card
                     </Heading>
+                    <Text color="gray.700">
+                        For every 500 points you earn, you get a stamp! You can earn a maximum of {maxStamps} stamps.
+                        
+                    </Text>
+
                     <Grid
                         templateColumns={{ base: "repeat(4, 1fr)", md: "repeat(5, 1fr)", xl: "repeat(10, 1fr)" }}
                         templateRows={{ base: "repeat(3, 1fr)", md: "repeat(2, 1fr)", xl: "1fr" }}
@@ -48,30 +51,39 @@ export default function StampCard() {
                             >
                                 <SkeletonCircle size="10" isLoaded position="absolute" border="1px" borderColor="grey" />
                                 {index < stamps && (
-                                    <SkeletonCircle
-                                        size="9"
-                                        isLoaded
-                                        bg={stamp.color}
+                                    // <SkeletonCircle
+                                    //     size="9"
+                                    //     isLoaded
+                                    //     bg={stamp.color}
+                                    //     position="absolute"
+                                    //     left={stamp.left}
+                                    //     top={stamp.top}
+                                    // />
+                                    <Image
+                                        src='/public/favicon-32x32.png'
+                                        bgColor={stamp.color}
                                         position="absolute"
                                         left={stamp.left}
                                         top={stamp.top}
+                                        objectFit="cover"
+                                        borderRadius="10px"
                                     />
                                 )}
                             </GridItem>
                         ))}
                     </Grid>
                 </CardBody>
-                <CardFooter display="flex" justifyContent="center">
+                {/* <CardFooter display="flex" justifyContent="center">
                     <Button
                         colorScheme={colorScheme}
                         size={{ base: "sm", md: "md" }}
-                        onClick={() => {
-                            if (stamps < maxStamps) setStamps(stamps + 1);
-                        }}
+                        // onClick={() => {
+                        //     if (stamps < maxStamps) setStamps(stamps + 1);
+                        // }}
                     >
                         Get me a stamp!
-                    </Button>
-                    <Button
+                    </Button> */} 
+                    {/* <Button
                         colorScheme="red"
                         size={{ base: "sm", md: "md" }}
                         ml="4"
@@ -90,8 +102,8 @@ export default function StampCard() {
                         }}
                     >
                         Reset
-                    </Button>
-                </CardFooter>
+                    </Button> 
+                </CardFooter> */}
             </Card>
         </Collapse>
     )

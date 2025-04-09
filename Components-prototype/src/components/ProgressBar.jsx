@@ -16,7 +16,7 @@ export default function ProgressBarComponent() {
                     mb="2"
                     mt="2"
                 >
-                    Progress bar component
+                    40 points away from the next level
                 </Text>
                 <Progress value={65} colorScheme={colorScheme} />
             </Collapse>
