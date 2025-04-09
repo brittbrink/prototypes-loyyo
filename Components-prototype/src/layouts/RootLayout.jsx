@@ -40,7 +40,6 @@ export default function RootLayout() {
         colSpan={{ base: 6, lg: 2, xl: 1 }}
         bg="blue.500"
         minH={{lg: "100vh"}}
-        //p={{ base: "10px", lg: "30px" }}
       >
         <Sidebar />
       </GridItem>
@@ -55,7 +54,6 @@ export default function RootLayout() {
       >
         <Navbar />
 
-         {/* Install Banner */}
          {showInstallBanner && (
           <Flex
             bg="blue.100"

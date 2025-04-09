@@ -27,10 +27,10 @@ export default function Navbar() {
             alignItems="center" 
             mb="5px" 
             h="60px"
-            flexDirection={{ base: "row", md: "row" }} // Stacked on small screens
-            justify={{ base: "center", md: "space-between" }} // Centered on mobile, spaced on desktop
+            flexDirection={{ base: "row", md: "row" }} 
+            justify={{ base: "center", md: "space-between" }} 
             textAlign={{ base: "center", md: "left" }}
-            gap={{ base: 3, md: 0 }} // Extra spacing on small screens
+            gap={{ base: 3, md: 0 }} 
         >
             <Heading as="h1" size="md">
                 Dojo Tasks
@@ -39,7 +39,7 @@ export default function Navbar() {
             <Stack 
                 direction={{ base: "row", md: "row" }} 
                 align="center" 
-                spacing={4} // Space between items
+                spacing={4}
             >
                 <HStack spacing="10px">
                     <Avatar name="mario" color="white" bg={primaryColor}>

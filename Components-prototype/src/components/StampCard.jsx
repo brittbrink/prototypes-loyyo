@@ -1,5 +1,6 @@
 import { Card, CardBody, Heading, SkeletonCircle, Grid, GridItem, Collapse, Text, Image } from '@chakra-ui/react'
 import { useVisibility } from '../context/GenericVisibilityContext'
+import { useProgress } from '../context/ProgressTiersContext'
 
 const stampConfig = [
     { left: { base: "16px", md: "40px", xl: "30px" }, top: { base: "0px", md: "10px", xl: "20px" }, color: "orange" },
@@ -14,9 +15,10 @@ const stampConfig = [
     { left: { base: "23px", md: "37px", xl: "10px" }, top: { base: "-2px", md: "18px", xl: "20px" }, color: "orange" },
 ];
 
-export default function StampCard({points}) {
+export default function StampCard() {
     const maxStamps = stampConfig.length;
     const { visibility } = useVisibility()
+    const { points } = useProgress()
 
     const stamps = Math.floor(points / 500)
 
@@ -29,9 +31,7 @@ export default function StampCard({points}) {
                     </Heading>
                     <Text color="gray.700">
                         For every 500 points you earn, you get a stamp! You can earn a maximum of {maxStamps} stamps.
-                        
                     </Text>
-
                     <Grid
                         templateColumns={{ base: "repeat(4, 1fr)", md: "repeat(5, 1fr)", xl: "repeat(10, 1fr)" }}
                         templateRows={{ base: "repeat(3, 1fr)", md: "repeat(2, 1fr)", xl: "1fr" }}
@@ -60,7 +60,7 @@ export default function StampCard({points}) {
                                     //     top={stamp.top}
                                     // />
                                     <Image
-                                        src='/public/favicon-32x32.png'
+                                        src='/favicon-32x32.png'
                                         bgColor={stamp.color}
                                         position="absolute"
                                         left={stamp.left}
@@ -73,37 +73,6 @@ export default function StampCard({points}) {
                         ))}
                     </Grid>
                 </CardBody>
-                {/* <CardFooter display="flex" justifyContent="center">
-                    <Button
-                        colorScheme={colorScheme}
-                        size={{ base: "sm", md: "md" }}
-                        // onClick={() => {
-                        //     if (stamps < maxStamps) setStamps(stamps + 1);
-                        // }}
-                    >
-                        Get me a stamp!
-                    </Button> */} 
-                    {/* <Button
-                        colorScheme="red"
-                        size={{ base: "sm", md: "md" }}
-                        ml="4"
-                        onClick={() => {
-                            if (stamps > 0) setStamps(stamps - 1);
-                        }}
-                    >
-                        Remove a stamp
-                    </Button>
-                    <Button
-                        colorScheme="red"
-                        size={{ base: "sm", md: "md" }}
-                        ml="4"
-                        onClick={() => {
-                            setStamps(0);
-                        }}
-                    >
-                        Reset
-                    </Button> 
-                </CardFooter> */}
             </Card>
         </Collapse>
     )

@@ -1,10 +1,12 @@
 import { Progress, Text, Collapse } from "@chakra-ui/react";
 import { useThemeContext } from "../layouts/ThemeContext";
 import { useVisibility } from "../context/GenericVisibilityContext";
+import { useProgress } from "../context/ProgressTiersContext";
 
 export default function ProgressBarComponent() {
     const { colorScheme } = useThemeContext();
     const { visibility } = useVisibility();
+    const { progressPercent, nextTierPointsLeft, nextTier } = useProgress();
 
     return (
         <>
@@ -16,9 +18,18 @@ export default function ProgressBarComponent() {
                     mb="2"
                     mt="2"
                 >
-                    40 points away from the next level
+                    {nextTierPointsLeft > 0
+                        ? `${nextTierPointsLeft} points away from ${nextTier.name}`
+                        : "You've reached the highest level!"}
                 </Text>
-                <Progress value={65} colorScheme={colorScheme} />
+                <Progress
+                    value={progressPercent}
+                    size="xs"
+                    width="100%"
+                    borderRadius="full"
+                    bg="gray.100"
+                    colorScheme={colorScheme}
+                />
             </Collapse>
         </>
     );

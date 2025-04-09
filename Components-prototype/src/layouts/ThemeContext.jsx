@@ -9,7 +9,6 @@ const ThemeContext = createContext({
 export function ThemeProvider({ children }) {
   const [primaryColor, setPrimaryColor] = useState("blue.400");
 
-  // Extract base color for `colorScheme` (e.g., "red.400" → "red")
   const colorScheme = primaryColor.split(".")[0];
 
   return (
