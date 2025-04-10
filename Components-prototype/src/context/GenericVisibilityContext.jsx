@@ -9,6 +9,7 @@ export const VisibilityProvider = ({ children }) => {
     stampCard: true,
     progressBar: true,
     points: true,
+    texts: true,
     // Add more components here if needed
   });
 
