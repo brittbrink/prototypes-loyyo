@@ -10,6 +10,7 @@ export const VisibilityProvider = ({ children }) => {
     progressBar: true,
     points: true,
     texts: true,
+    location: true,
     // Add more components here if needed
   });
 

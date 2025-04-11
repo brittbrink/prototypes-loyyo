@@ -105,12 +105,22 @@ export default function Sidebar() {
                                 onChange={() => toggleVisibility("points")}
                             />
                         </HStack>
+                        
                         <HStack spacing={4}>
                             <Text color="white">Texts</Text>
                             <Switch
                                 colorScheme="teal"
                                 isChecked={visibility.texts}
                                 onChange={() => toggleVisibility("texts")}
+                            />
+                        </HStack>
+
+                        <HStack spacing={4}>
+                            <Text color="white">Location</Text>
+                            <Switch
+                                colorScheme="teal"
+                                isChecked={visibility.location}
+                                onChange={() => toggleVisibility("location")}
                             />
                         </HStack>
                     </SimpleGrid>
