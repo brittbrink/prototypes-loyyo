@@ -16,18 +16,23 @@ export default function Sidebar() {
             p="10px"
             bg={primaryColor}
             color="white"
-            direction={{ base: "row", lg: "column" }}
-            minH={{ lg: "full" }}
-            w="full"
-
+            direction={{ base: "row", md: "row", lg: "column" }}
+            minH={{ base: "auto", md: "auto", lg: "100vh" }}
+            w="full" // 👈 zorg dat hij altijd volledige breedte neemt
+            wrap="wrap"
+            justify="space-between" // 👈 of 'center' / 'space-evenly' / 'start' naar wens
+            align="center"
         >
+
             <Stack
-                direction={{ base: "column", lg: "column" }}
+                direction={{ base: "row", md: "row", lg: "column" }}
                 spacing={4}
                 align="center"
+                justify="center"
+                wrap="wrap"
                 w="full"
             >
-                <List display="flex" flexDirection={{ base: "row", lg: "column" }} gap={4} fontSize="1.2em">
+                <List display="flex" flexDirection={{ base: "row", md: "row", lg: "column" }} gap={4} fontSize="1.2em">
                     <ListItem>
                         <NavLink to="/">
                             <ListIcon as={CalendarIcon} color="white" />
@@ -105,7 +110,7 @@ export default function Sidebar() {
                                 onChange={() => toggleVisibility("points")}
                             />
                         </HStack>
-                        
+
                         <HStack spacing={4}>
                             <Text color="white">Texts</Text>
                             <Switch

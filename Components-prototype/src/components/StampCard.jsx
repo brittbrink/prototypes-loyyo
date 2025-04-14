@@ -20,8 +20,10 @@ export default function StampCard() {
     const { visibility } = useVisibility()
     const { points } = useProgress()
 
-    const stamps = Math.floor(points / 500)
+    const rawStamps = Math.floor(points / 500);
+    const stamps = rawStamps % (maxStamps + 1) || (points >= 500 ? 1 : 0);
 
+    
     return (
         <Collapse in={visibility.stampCard} animateOpacity unmountOnExit>
             <Card mt="2">
