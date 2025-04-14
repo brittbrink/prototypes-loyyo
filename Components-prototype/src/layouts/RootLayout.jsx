@@ -93,7 +93,7 @@ export default function RootLayout() {
           </Flex>
         )}
 
-        <Box flex="1" mb="55px">
+        <Box flex="1" mb={{base: "55px"}}>
           <Outlet />
         </Box>
       </GridItem>
