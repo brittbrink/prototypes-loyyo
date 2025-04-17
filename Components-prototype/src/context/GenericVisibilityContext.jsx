@@ -1,18 +1,30 @@
-import { createContext, useContext, useState } from "react";
+// context/GenericVisibilityContext.jsx
+import React, { createContext, useContext, useState } from "react";
 
-const VisibilityContext = createContext();
+const GenericVisibilityContext = createContext();
+
+const defaultComponents = [
+  "points",
+  "tierLevel",
+  "progressBar",
+  "stampCard",
+  "table",
+  "texts",
+  "location",
+];
 
 export const VisibilityProvider = ({ children }) => {
   const [visibility, setVisibility] = useState({
     table: true,
     tierLevel: true,
-    stampCard: true,
     progressBar: true,
+    stampCard: true,
     points: true,
     texts: true,
     location: true,
-    // Add more components here if needed
   });
+
+  const [componentOrder, setComponentOrder] = useState(defaultComponents);
 
   const toggleVisibility = (key) => {
     setVisibility((prev) => ({
@@ -21,20 +33,17 @@ export const VisibilityProvider = ({ children }) => {
     }));
   };
 
-  const setComponentVisibility = (key, value) => {
-    setVisibility((prev) => ({
-      ...prev,
-      [key]: value,
-    }));
+  const reorderComponents = (newOrder) => {
+    setComponentOrder(newOrder);
   };
 
   return (
-    <VisibilityContext.Provider value={{ visibility, toggleVisibility, setComponentVisibility }}>
+    <GenericVisibilityContext.Provider
+      value={{ visibility, toggleVisibility, componentOrder, reorderComponents }}
+    >
       {children}
-    </VisibilityContext.Provider>
+    </GenericVisibilityContext.Provider>
   );
 };
 
-export const useVisibility = () => {
-  return useContext(VisibilityContext);
-};
+export const useVisibility = () => useContext(GenericVisibilityContext);

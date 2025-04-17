@@ -10,7 +10,7 @@ export default function Points() {
 
     return (
         <Collapse in={visibility.points} animateOpacity unmountOnExit>
-            <Box position="relative" width="100%" maxWidth="400px" margin="auto" mb="10" mt="4">
+            <Box position="relative" width="100%" maxWidth="400px" margin="auto" mb="10" mt="8">
                 <Card
                     borderRadius="20px"
                     width={{ base: "90%", md: "100%", lg: "100%", xl: "100%" }} // Adjust width based on screen size
